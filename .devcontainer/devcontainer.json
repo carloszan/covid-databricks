@@ -1,0 +1,79 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "eamodio.gitlens",
+        "eriklynd.json-tools",
+        "matangover.mypy",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-toolsai.vscode-jupyter-slideshow"
+      ],
+      "settings": {
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          },
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        },
+        "mypy.configFile": "./udp_global_metric_library/pyproject.toml",
+        "mypy.runUsingActiveInterpreter": true,
+        "notebook.formatOnSave.enabled": true,
+        "notebook.codeActionsOnSave": {
+          "notebook.source.fixAll": "explicit",
+          "notebook.source.organizeImports": "explicit"
+        },
+        "notebook.output.scrolling": true,
+        "pylint.args": [
+          "--disable=R0903,R0902,W0622,W0621",
+          "--extension-pkg-whitelist=pyspark",
+          "--generated-members=pyspark.*",
+          "--ignored-modules=pyspark.sql.functions,delta.tables",
+          "--max-line-length=150"
+        ],
+        "pylint.interpreter": [
+          "/opt/conda/envs/pyspark/bin/python"
+        ],
+        "pylint.path": [
+          "/opt/conda/envs/pyspark/bin/pylint"
+        ],
+        "python.analysis.extraPaths": [
+          "./package",
+          "/opt/conda/envs/pyspark/lib/python3.10/site-packages"
+        ],
+        "python.analysis.inlayHints.functionReturnTypes": false,
+        "python.analysis.inlayHints.callArgumentNames": "off",
+        "python.analysis.inlayHints.pytestParameters": false,
+        "python.analysis.inlayHints.variableTypes": false,
+        "python.defaultInterpreterPath": "/opt/conda/envs/pyspark/bin/python",
+        "python.languageServer": "Pylance",
+        "python.terminal.activateEnvironment": true,
+        "python.testing.autoTestDiscoverOnSaveEnabled": false,
+        "python.testing.promptToConfigure": false,
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestPath": "/opt/conda/envs/pyspark/bin/pytest",
+        "python.testing.unittestEnabled": false,
+        "remote.autoForwardPorts": false,
+        "remote.restoreForwardedPorts": false,
+        "ruff.lineLength": 150,
+        "ruff.lint.enable": true,
+        "ruff.organizeImports": true,
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  },
+  "dockerComposeFile": [
+    "./docker-compose.yml"
+  ],
+  "name": "COVID-DATABRICKS",
+  "service": "devcontainer",
+  "workspaceFolder": "/COVID-DATABRICKS"
+}

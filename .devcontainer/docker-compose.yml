@@ -1,0 +1,14 @@
+version: '3'
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sleep infinity
+    container_name: covid_databricks
+    image: covid_databricks
+    init: true
+    volumes:
+      - ..:/COVID-DATABRICKS:cached
+    ports:
+      - "4040:4040"
