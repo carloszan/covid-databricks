@@ -4,6 +4,7 @@ Services to help local environment services and configurations.
 
 from typing import Optional
 
+from delta import configure_spark_with_delta_pip
 from pyspark.sql.session import SparkSession
 
 
@@ -19,28 +20,14 @@ class SparkSessionService:
     """
 
     _existing_instance: Optional["SparkSessionService"] = None
-    _database_path: str
     _spark_session: SparkSession
 
-    def __new__(cls, database_path: str) -> "SparkSessionService":
+    def __new__(cls) -> "SparkSessionService":
         if cls._existing_instance is None:
             cls._existing_instance = super(SparkSessionService, cls).__new__(cls)
-            cls._existing_instance._database_path = database_path
             cls._existing_instance._spark_session = cls._existing_instance._create_spark_session()
         return cls._existing_instance
 
-    @property
-    def database_path(self) -> str:
-        """
-        The path to the delta store.
-        """
-        return self._database_path
-
-    @database_path.setter
-    def database_path(self, value: str) -> None:
-        self._database_path = value
-
-    @property
     def spark_session(self) -> SparkSession:
         """
         The Spark session.
@@ -54,9 +41,16 @@ class SparkSessionService:
         Returns:
             SparkSession: The Spark session.
         """
-        builder = SparkSession.builder.config("spark.driver.memory", "2g")
+        builder = (
+            SparkSession.builder.config("spark.driver.memory", "2g")
+            .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
+            .config(
+                "spark.sql.catalog.spark_catalog",
+                "org.apache.spark.sql.delta.catalog.DeltaCatalog",
+            )
+        )
 
-        spark_session = builder.getOrCreate()
+        spark_session = configure_spark_with_delta_pip(builder).enableHiveSupport().getOrCreate()
         return spark_session
 
     def get_spark_session(self) -> SparkSession:

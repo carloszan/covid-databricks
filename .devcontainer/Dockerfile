@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3
+FROM condaforge/miniforge3:25.9.1-0
 
 ENV PATH /root/.local/bin:$PATH
 
