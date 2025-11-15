@@ -1,11 +1,7 @@
 # %%
-dbutils.widgets.text("input_path", "", "Input Path")
-dbutils.widgets.text("output_path", "", "Output Path")
-
-# %%
 # Retrieve the values
 landing_path = dbutils.widgets.get("landing_path")
-bronze_path = dbutils.widgets.get("bronze_table_path")
+bronze_path = dbutils.widgets.get("bronze_path")
 
 
 # %%
