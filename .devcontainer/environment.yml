@@ -1,10 +1,7 @@
 channels:
   - conda-forge
 dependencies:
-  - pip
-  - pip:
-    - pyspark==3.4.1
-    - delta-spark==2.4.0
+  - delta-spark=2.4.0
   - ipykernel
   - ruff
   - pylint
@@ -12,6 +9,7 @@ dependencies:
   - pylint
   - ruff
   - openjdk=17
+  - pyspark=3.4.1
   - python=3.10
   - pytest
   - pytest-mock

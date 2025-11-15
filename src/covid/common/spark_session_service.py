@@ -57,4 +57,4 @@ class SparkSessionService:
         """
         Returns the Spark session.
         """
-        return self.spark_session
+        return self.spark_session()
