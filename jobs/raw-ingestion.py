@@ -1,6 +1,6 @@
 # %%
-dbutils.widgets.text("landing_path", "", "Input Path")
-dbutils.widgets.text("bronze_path", "", "Output Path")
+dbutils.widgets.text("landing_path", "/Volumes/workspace/bronze/landing/HIST_PAINEL_COVIDBR_2020_Parte1_05set2025.csv", "Input Path")
+dbutils.widgets.text("bronze_path", "/Volumes/workspace/bronze/covid/", "Output Path")
 
 # %%
 # Retrieve the values
