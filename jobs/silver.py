@@ -26,6 +26,12 @@ df = rename_columns(df)
 logging.info("Adding new columns")
 df = add_date_features(df)
 
+# %%o
+from covid.silver import apply_smooth
+
+logging.info("Smoothing series")
+df = apply_smooth(df)
+
 
 # %%
 from covid.common import write_delta
