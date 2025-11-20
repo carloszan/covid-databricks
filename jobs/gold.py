@@ -12,7 +12,7 @@ silver_path = dbutils.widgets.get("silver_path")
 gold_path = dbutils.widgets.get("gold_path")
 
 # %%
-from covid.gold import read_delta
+from covid.common import read_delta
 
 df = read_delta(spark, silver_path)
 
