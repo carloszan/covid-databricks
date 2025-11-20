@@ -24,4 +24,4 @@ cases_per_region_df = cases_per_region(df)
 # %%
 from covid.common import write_delta
 
-write_delta(df, gold_path, "overwrite")
+write_delta(cases_per_region_df, gold_path, "overwrite")
