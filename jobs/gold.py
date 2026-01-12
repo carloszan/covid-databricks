@@ -17,11 +17,16 @@ from covid.common import read_delta
 df = read_delta(spark, silver_path)
 
 # %%
+from covid.common import write_delta
 from covid.gold import cases_per_region
 
 cases_per_region_df = cases_per_region(df)
 
-# %%
-from covid.common import write_delta
+write_delta(cases_per_region_df, gold_path + "/cases_per_region", "overwrite")
 
-write_delta(cases_per_region_df, gold_path, "overwrite")
+# %%
+from covid.gold import cases_per_state
+
+cases_per_state_df = cases_per_state(df)
+
+write_delta(cases_per_state_df, gold_path + "/cases_per_state", "overwrite")
