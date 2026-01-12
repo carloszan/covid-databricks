@@ -22,11 +22,11 @@ from covid.gold import cases_per_region
 
 cases_per_region_df = cases_per_region(df)
 
-write_delta(cases_per_region_df, gold_path + "/cases_per_region", "overwrite")
+write_delta(cases_per_region_df, gold_path + "cases_per_region", "overwrite")
 
 # %%
 from covid.gold import cases_per_state
 
 cases_per_state_df = cases_per_state(df)
 
-write_delta(cases_per_state_df, gold_path + "/cases_per_state", "overwrite")
+write_delta(cases_per_state_df, gold_path + "cases_per_state", "overwrite")
